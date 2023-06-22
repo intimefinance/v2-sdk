@@ -4,6 +4,8 @@ import { Trade } from './trade'
 import JSBI from 'jsbi'
 import { Ether, CurrencyAmount, Percent, Token, TradeType, WETH9, Price } from '@uniswap/sdk-core'
 
+const FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
+
 describe('Trade', () => {
   const ETHER = Ether.onChain(1)
   const token0 = new Token(1, '0x0000000000000000000000000000000000000001', 18, 't0')
@@ -12,32 +14,39 @@ describe('Trade', () => {
   const token3 = new Token(1, '0x0000000000000000000000000000000000000004', 18, 't3')
 
   const pair_0_1 = new Pair(
+    FACTORY_ADDRESS,
     CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(1000)),
     CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(1000))
   )
   const pair_0_2 = new Pair(
+    FACTORY_ADDRESS,
     CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(1000)),
     CurrencyAmount.fromRawAmount(token2, JSBI.BigInt(1100))
   )
   const pair_0_3 = new Pair(
+    FACTORY_ADDRESS,
     CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(1000)),
     CurrencyAmount.fromRawAmount(token3, JSBI.BigInt(900))
   )
   const pair_1_2 = new Pair(
+    FACTORY_ADDRESS,
     CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(1200)),
     CurrencyAmount.fromRawAmount(token2, JSBI.BigInt(1000))
   )
   const pair_1_3 = new Pair(
+    FACTORY_ADDRESS,
     CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(1200)),
     CurrencyAmount.fromRawAmount(token3, JSBI.BigInt(1300))
   )
 
   const pair_weth_0 = new Pair(
+    FACTORY_ADDRESS,
     CurrencyAmount.fromRawAmount(WETH9[1], JSBI.BigInt(1000)),
     CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(1000))
   )
 
   const empty_pair_0_1 = new Pair(
+    FACTORY_ADDRESS,
     CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(0)),
     CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(0))
   )

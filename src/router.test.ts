@@ -4,6 +4,8 @@ import { Router } from './router'
 import invariant from 'tiny-invariant'
 import { CurrencyAmount, Percent, Ether, Token, WETH9 } from '@uniswap/sdk-core'
 
+const FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
+
 function checkDeadline(deadline: string[] | string): void {
   expect(typeof deadline).toBe('string')
   invariant(typeof deadline === 'string')
@@ -17,11 +19,13 @@ describe('Router', () => {
   const token1 = new Token(1, '0x0000000000000000000000000000000000000002', 18, 't1')
 
   const pair_0_1 = new Pair(
+    FACTORY_ADDRESS,
     CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(1000)),
     CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(1000))
   )
 
   const pair_weth_0 = new Pair(
+    FACTORY_ADDRESS,
     CurrencyAmount.fromRawAmount(WETH9[1], '1000'),
     CurrencyAmount.fromRawAmount(token0, '1000')
   )

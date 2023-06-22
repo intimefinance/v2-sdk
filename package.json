@@ -1,5 +1,5 @@
 {
-  "name": "@uniswap/v2-sdk",
+  "name": "@intimefinance/v2-sdk",
   "license": "MIT",
   "version": "3.0.1",
   "description": "🛠 An SDK for building applications on top of Uniswap V2",
@@ -8,7 +8,11 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/Uniswap/uniswap-v2-sdk.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intimefinance/v2-sdk.git"
+  },
+  "homepage": "https://github.com/intimefinance/v2-sdk#readme",
   "keywords": [
     "uniswap",
     "ethereum"

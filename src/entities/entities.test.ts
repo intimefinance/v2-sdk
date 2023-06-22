@@ -3,6 +3,7 @@ import invariant from 'tiny-invariant'
 import { WETH9 as _WETH9, TradeType, Token, CurrencyAmount } from '@uniswap/sdk-core'
 import { Pair, Route, Trade } from '../index'
 
+const FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
 const ADDRESSES = [
   '0x0000000000000000000000000000000000000001',
   '0x0000000000000000000000000000000000000002',
@@ -32,14 +33,17 @@ describe('entities', () => {
       it('Pair', () => {
         pairs = [
           new Pair(
+            FACTORY_ADDRESS,
             CurrencyAmount.fromRawAmount(tokens[0], decimalize(1, tokens[0].decimals)),
             CurrencyAmount.fromRawAmount(tokens[1], decimalize(1, tokens[1].decimals))
           ),
           new Pair(
+            FACTORY_ADDRESS,
             CurrencyAmount.fromRawAmount(tokens[1], decimalize(1, tokens[1].decimals)),
             CurrencyAmount.fromRawAmount(tokens[2], decimalize(1, tokens[2].decimals))
           ),
           new Pair(
+            FACTORY_ADDRESS,
             CurrencyAmount.fromRawAmount(tokens[2], decimalize(1, tokens[2].decimals)),
             CurrencyAmount.fromRawAmount(WETH9, decimalize(1234, WETH9.decimals))
           )
@@ -79,6 +83,7 @@ describe('entities', () => {
           route = new Route(
             [
               new Pair(
+                FACTORY_ADDRESS,
                 CurrencyAmount.fromRawAmount(tokens[1], decimalize(5, tokens[1].decimals)),
                 CurrencyAmount.fromRawAmount(WETH9, decimalize(10, WETH9.decimals))
               )
@@ -124,6 +129,7 @@ describe('entities', () => {
             const route = new Route(
               [
                 new Pair(
+                  FACTORY_ADDRESS,
                   CurrencyAmount.fromRawAmount(tokens[1], decimalize(1, tokens[1].decimals)),
                   CurrencyAmount.fromRawAmount(
                     WETH9,
